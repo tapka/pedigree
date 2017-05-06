@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 import { createStore, applyMiddleware } from 'redux';
-import { Router, browserHistory } from 'react-router';
+
 import reducers from './reducers';
-import routes from './routes';
 import promise from 'redux-promise';
+import App from './components/app';
 
 const createStoreWithMiddleware = applyMiddleware(
   promise
@@ -13,6 +14,8 @@ const createStoreWithMiddleware = applyMiddleware(
 
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
-    <Router history={browserHistory} routes={routes}/>
+    <BrowserRouter basename="/pedigree">
+      <App/>
+    </BrowserRouter>
   </Provider>
   , document.querySelector('.container'));

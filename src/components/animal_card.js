@@ -1,6 +1,7 @@
-import React, {Component, PropTypes} from "react";
+import React, {Component} from "react";
 import {connect} from "react-redux";
 import {fetchAnimal} from "../actions/index";
+import PropTypes from 'prop-types';
 
 class AnimalCard extends Component {
   static contextTypes = {
@@ -8,7 +9,7 @@ class AnimalCard extends Component {
   };
 
   componentWillMount() {
-    this.props.fetchAnimal(this.props.params.id);
+    this.props.fetchAnimal(this.props.match.params.id);
   }
 
   render() {
