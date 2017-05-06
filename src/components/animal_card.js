@@ -1,37 +1,15 @@
-import React, {Component} from "react";
-import {connect} from "react-redux";
-import {fetchAnimal} from "../actions/index";
-import PropTypes from 'prop-types';
+import React from "react";
+import {Link} from "react-router-dom";
 
-class AnimalCard extends Component {
-  static contextTypes = {
-    router: PropTypes.object
-  };
+export default ({animal}) => {
 
-  componentWillMount() {
-    this.props.fetchAnimal(this.props.match.params.id);
-  }
-
-  render() {
-    const {animal} = this.props;
-
-    if (!animal) {
-      return <div>Loading...</div>
-    }
-    return (
-        <div>
-          <h3><a href={animal.url} target="_blank">{animal.name}</a></h3>
-          <img src={animal.thumb}/>
-          <p>{animal.dadId}</p>
-          <p>{animal.momId}</p>
-          <p>{animal.sex}</p>
-        </div>
-    );
-  };
+  return (
+      <div className={`animal-card ${animal.sex}`}>
+        <h4><a href={animal.url} target="_blank">{animal.name}</a></h4>
+        <Link to={`/${animal.id}`}>
+          <img src={animal.thumb} width={156}/>
+        </Link>
+        <p>{animal.dadId ? 'd' : 'x'}-{animal.momId ? 'm' : 'x'}</p>
+      </div>
+  )
 }
-
-function mapStateToProps(state) {
-  return {animal: state.animals.animal};
-}
-
-export default connect(mapStateToProps, {fetchAnimal})(AnimalCard);
