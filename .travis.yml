@@ -1,0 +1,23 @@
+language: node_js
+node_js:
+  - "7"
+
+before_script:
+  - npm install -g webpack
+
+script: webpack -p
+
+before_deploy:
+  - mkdir tapka-build
+  - cp -R style tapka-build
+  - cp index.html tapka-build
+  - cp bundle.js tapka-build
+  - ls tapka-build
+
+deploy:
+  provider: pages
+  local_dir: tapka-build
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  on:
+    branch: master
