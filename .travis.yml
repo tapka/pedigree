@@ -11,6 +11,7 @@ before_deploy:
   - mkdir tapka-build
   - cp -R style tapka-build
   - cp index.html tapka-build
+  - cp 404.html tapka-build
   - cp bundle.js tapka-build
   - ls tapka-build
 
