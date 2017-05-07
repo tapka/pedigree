@@ -1,4 +1,5 @@
 .animal-card {
+    text-align: center;
     width: 160px;
     border: 2px solid;
     border-radius: 10px;
@@ -6,12 +7,26 @@
     margin-left: auto;
     margin-right: auto;
 }
-.animal-card.h4 {
-    text-align: center;
+.animal-card h4 {
+    padding: 5px 0;
 }
 .animal-card.male {
     border-color: blue;
 }
 .animal-card.female {
     border-color: pink;
+}
+
+.mates {
+    text-align: center;
+}
+
+.mate {
+    display: inline-block;
+    vertical-align:top;
+    margin: 10px;
+}
+
+.mate .btn {
+    margin: 10px;
 }
