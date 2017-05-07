@@ -1,13 +1,9 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import {fetchAnimal} from "../actions/index";
-import PropTypes from "prop-types";
 import AnimalCard from "./animal_card";
 
 class Animal extends Component {
-  static contextTypes = {
-    router: PropTypes.object
-  };
 
   constructor(props) {
     super(props);

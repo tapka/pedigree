@@ -11,17 +11,17 @@
     padding: 5px 0;
 }
 .animal-card.male {
-    border-color: blue;
+    border-color: #2fa9be;
 }
 .animal-card.female {
     border-color: pink;
 }
 
-.mates {
+.mates, .children {
     text-align: center;
 }
 
-.mate {
+.mate, .child {
     display: inline-block;
     vertical-align:top;
     margin: 10px;

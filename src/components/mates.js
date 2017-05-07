@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import Animal from "./animal";
 import {Link} from "react-router-dom";
 
-
 class Mates extends Component {
 
   pluralizeChild(count) {
@@ -13,12 +12,14 @@ class Mates extends Component {
     return "children";
   }
 
-  renderMates(mates) {
+  renderMates(animal) {
 
-    return mates.map((mate) => {
+    return animal.mates.map((mate) => {
       return (
           <div className="mate" key={mate.mateId}>
-            <Link className="btn btn-info" to="#">Show {mate.childrenIds.length} {this.pluralizeChild(mate.childrenIds.length)}</Link>
+            <Link className="btn btn-info" to={`/marriage/${animal.id}-${mate.mateId}`}>
+              Show {mate.childrenCount} {this.pluralizeChild(mate.childrenCount)}
+              </Link>
             <Animal animalId={mate.mateId}/>
           </div>
       )
@@ -30,7 +31,7 @@ class Mates extends Component {
     return (
         <div className="row mates">
           <h4>Mates</h4>
-          {this.renderMates(this.props.mates)}
+          {this.renderMates(this.props.animal)}
         </div>
     );
   };

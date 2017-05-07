@@ -91,7 +91,7 @@ class Pedigree extends Component {
       return (null);
     }
 
-    return (<Mates mates={animal.mates}/>);
+    return (<Mates animal={animal}/>);
   }
 
   render() {
