@@ -4,6 +4,6 @@ import {Link} from "react-router-dom";
 export default () => (
     <div>
       <h1>Home</h1>
-      <Link to="/58bfcd3b975a291cc1d6b557">Try Rozeta</Link>
+      <Link to="/animal/55b9c8fe975a001022d08924">Try Mercury Fredie Bohemia Point</Link><br/>
     </div>
 );
