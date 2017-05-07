@@ -9,7 +9,11 @@ export default ({animal}) => {
         <Link to={`/${animal.id}`}>
           <img src={animal.thumb} width={156}/>
         </Link>
-        <p>{animal.dadId ? 'd' : 'x'}-{animal.momId ? 'm' : 'x'}</p>
+        <p>
+          Mates: {animal.mates.length}<br/>
+          Ancestors: {animal.ancestorCount}<br/>
+          Descendants: {animal.descendantCount}
+        </p>
       </div>
   )
 }
