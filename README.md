@@ -24,16 +24,19 @@ And this is **[new enhanced version](https://tapka.github.io/pedigree/animal/55b
 
 ## Behind the scenes
 
-Uses React, Redux and Travis CI to deploy to Github Pages.
+[Pedigree component](https://github.com/tapka/pedigree/blob/master/src/components/pedigree.js#L111) renders itself and its parents recursively until it hits ANCESTOR_LEVELS limitation.
+
+Application uses React, Redux and Travis CI to deploy to Github Pages.
 
 REST endpoints were implemented specially for this application. 
 
 
-## Roadmap
+## TODO
 
 - add animations
 - improve UI
 - add panel with history - listing visited dogs
+- add tests
 
 ---
 
