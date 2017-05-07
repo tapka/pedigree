@@ -13,6 +13,9 @@ export default class App extends Component {
             <Route exact path='/animal/:id' component={Pedigree}/>
             <Route exact path='/marriage/:id-:mateId' component={Marriage}/>
           </Switch>
+          <div className="bottom">
+            <a href="https://github.com/tapka/pedigree" target="_blank">Github Repo</a>
+          </div>
         </div>
     );
   }
