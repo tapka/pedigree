@@ -7,7 +7,6 @@ import AnimalParent from "./animal";
 
 /**
  * pujde se zbavit animalId? Idealne bych ve state chtel mit jenom animal
- * pujde se zbavit active?
  * pujde se zbavit znovunacitani jiz nactenych zvirat?
  * pujde se zbavit loading pri dosazeni max depth?
  */
@@ -21,7 +20,6 @@ class Animal extends Component {
     super(props);
 
     this.state = {
-      active: false,
       depth: null,
       animalId: null
     };
@@ -33,13 +31,11 @@ class Animal extends Component {
     if (this.props.animalId) {
       state = {
         depth: this.props.depth + 1,
-        active: false,
         animalId: this.props.animalId
       };
     } else {
       state = {
         depth: 0,
-        active: true,
         animalId: this.props.match.params.id
       };
     }
@@ -50,7 +46,7 @@ class Animal extends Component {
 
     this.setState(state);
 
-    this.props.fetchAnimal(state.animalId, state.active);
+    this.props.fetchAnimal(state.animalId);
   }
 
   componentWillReceiveProps(props) {
@@ -64,12 +60,11 @@ class Animal extends Component {
 
     let state = {
       depth: 0,
-      active: true,
       animalId: props.match.params.id
     };
     this.setState(state);
 
-    this.props.fetchAnimal(state.animalId, state.active);
+    this.props.fetchAnimal(state.animalId);
   }
 
   renderParents(animal) {
@@ -97,7 +92,7 @@ class Animal extends Component {
 
   render() {
 
-    const animal = this.props.animals[this.state.active ? this.props.animals.active : this.state.animalId];
+    const animal = this.props.animals[this.state.animalId];
 
     if (!animal) {
       return <div>Loading...</div>
