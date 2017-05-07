@@ -7,11 +7,6 @@ import AnimalParent from "./animal";
 
 const ANCESTORS_LEVELS = 2;
 
-/**
- * pujde se zbavit animalId? Idealne bych ve state chtel mit jenom animal
- * pujde se zbavit znovunacitani jiz nactenych zvirat?
- */
-
 class Animal extends Component {
   static contextTypes = {
     router: PropTypes.object
@@ -29,12 +24,13 @@ class Animal extends Component {
   componentWillMount() {
 
     let state = {};
-    const isAncestor = typeof this.props.animalId !== "undefined";
+    const isAncestor = !!this.props.animalId;
     if (isAncestor) {
       state = {
         depth: this.props.depth,
         animalId: this.props.animalId
       };
+      // is main animal with animalId loaded from route /:id
     } else {
       state = {
         animalId: this.props.match.params.id
@@ -43,11 +39,14 @@ class Animal extends Component {
 
     this.setState(state);
 
-    this.props.fetchAnimal(state.animalId);
+    const fetchAnimal = !this.props.animals[state.animalId];
+    if (fetchAnimal) {
+      this.props.fetchAnimal(state.animalId);
+    }
   }
 
   componentWillReceiveProps(props) {
-    if (!props.match || props.match.params.id === props.animals.active) {
+    if (!props.match) {
       return;
     }
 
