@@ -5,10 +5,11 @@ import PropTypes from "prop-types";
 import AnimalCard from "./animal_card";
 import AnimalParent from "./animal";
 
+const ANCESTORS_LEVELS = 2;
+
 /**
  * pujde se zbavit animalId? Idealne bych ve state chtel mit jenom animal
  * pujde se zbavit znovunacitani jiz nactenych zvirat?
- * pujde se zbavit loading pri dosazeni max depth?
  */
 
 class Animal extends Component {
@@ -20,7 +21,7 @@ class Animal extends Component {
     super(props);
 
     this.state = {
-      depth: null,
+      depth: 0,
       animalId: null
     };
   }
@@ -28,20 +29,16 @@ class Animal extends Component {
   componentWillMount() {
 
     let state = {};
-    if (this.props.animalId) {
+    const isAncestor = typeof this.props.animalId !== "undefined";
+    if (isAncestor) {
       state = {
-        depth: this.props.depth + 1,
+        depth: this.props.depth,
         animalId: this.props.animalId
       };
     } else {
       state = {
-        depth: 0,
         animalId: this.props.match.params.id
       };
-    }
-
-    if (state.depth > 2) {
-      return;
     }
 
     this.setState(state);
@@ -50,11 +47,7 @@ class Animal extends Component {
   }
 
   componentWillReceiveProps(props) {
-    if (!props.match) {
-      return;
-    }
-
-    if (props.match.params.id === props.animals.active) {
+    if (!props.match || props.match.params.id === props.animals.active) {
       return;
     }
 
@@ -63,31 +56,33 @@ class Animal extends Component {
       animalId: props.match.params.id
     };
     this.setState(state);
-
-    this.props.fetchAnimal(state.animalId);
   }
 
   renderParents(animal) {
 
+    if (this.state.depth === ANCESTORS_LEVELS) {
+      return (null);
+    }
+
     let parents = [];
     if (animal.dadId) {
-      parents.push (
+      parents.push(
           <div className="col-sm-6" key={animal.dadId}>
-            <AnimalParent animalId={animal.dadId} depth={this.state.depth}/>
+            <AnimalParent animalId={animal.dadId} depth={this.state.depth + 1}/>
           </div>
       );
     }
 
 
     if (animal.momId) {
-      parents.push (
+      parents.push(
           <div className="col-sm-6" key={animal.momId}>
-            <AnimalParent animalId={animal.momId} depth={this.state.depth}/>
+            <AnimalParent animalId={animal.momId} depth={this.state.depth + 1}/>
           </div>
-       );
-     }
+      );
+    }
 
-     return parents;
+    return parents;
   }
 
   render() {
@@ -95,14 +90,14 @@ class Animal extends Component {
     const animal = this.props.animals[this.state.animalId];
 
     if (!animal) {
-      return <div>Loading...</div>
+      return <div>Loading Animal...</div>
     }
 
     return (
         <div>
           <div className="row">
 
-          {this.renderParents(animal)}
+            {this.renderParents(animal)}
 
           </div>
           <div className="row">
