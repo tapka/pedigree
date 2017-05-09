@@ -102,7 +102,8 @@ class Pedigree extends Component {
       return <div>Loading Animal...</div>
     }
 
-    const hr = this.state.depth === 0 ? (<hr/>) : (null);
+    const hrTop = this.state.depth === 0 && animal.ancestorsCount > 0 ? (<hr/>) : (null);
+    const hrBottom = this.state.depth === 0 && animal.mates.length > 0 ? (<hr/>) : (null);
 
     return (
         <div>
@@ -113,11 +114,11 @@ class Pedigree extends Component {
           </div>
           <div className="row">
 
-            {hr}
+            {hrTop}
 
             <AnimalCard animal={animal}/>
 
-            {hr}
+            {hrBottom}
 
           </div>
 
