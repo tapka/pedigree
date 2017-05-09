@@ -33,7 +33,10 @@
 
 .bottom {
     position: fixed;
-    left: 0;
-    right: 0;
+    width:100%;
     bottom: 0;
+}
+
+.bottom .right {
+    text-align: right;
 }
