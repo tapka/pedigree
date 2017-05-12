@@ -5,7 +5,7 @@ export default ({animal}) => {
 
   return (
       <div className={`animal-card ${animal.sex}`}>
-        <h4><a href={animal.url} target="_blank">{animal.name}</a></h4>
+        <h5><a href={animal.url} target="_blank">{animal.name}</a></h5>
         <Link to={`/animal/${animal.id}`}>
           <img src={animal.thumb} width={156}/>
         </Link>

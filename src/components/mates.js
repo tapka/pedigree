@@ -17,7 +17,7 @@ class Mates extends Component {
     return animal.mates.map((mate) => {
       return (
           <div className="mate" key={mate.mateId}>
-            <Link className="btn btn-info" to={`/marriage/${animal.id}-${mate.mateId}`}>
+            <Link className="button" to={`/marriage/${animal.id}-${mate.mateId}`}>
               Show {mate.childrenCount} {this.pluralizeChild(mate.childrenCount)}
               </Link>
             <Animal animalId={mate.mateId}/>
