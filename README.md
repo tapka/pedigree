@@ -12,7 +12,7 @@ Tapka offers freemium pricing. You get almost everything for free - like [Pod Be
 
 Do you want your website to look more professional? You can use Tapka with custom domain - like [Budweis Jack](http://www.budweisjack.cz/en).
 
-Or you can take it to the next level and we'll create a custom design for you- like [Anachsunamun](http://www.anachsunamun.cz/en/jack-russell-terrier/future-litters).
+Or you can take it to the next level and we'll create a custom design for you - like [Anachsunamun](http://www.anachsunamun.cz/en/jack-russell-terrier/females).
 
 ## Motivation for this app
 
